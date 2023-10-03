@@ -1,0 +1,3 @@
+requests<3,>=2.27
+requests_toolbelt<1,>=0.9.1
+gql>=3.0.0
