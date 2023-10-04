@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from astrapy.rest import http_methods
-from astrapy.rest import create_client as create_astra_client
+from astrapy.config.base import http_methods
+from astrapy.config.base import AstraClient
 import logging
 import json
 
 logger = logging.getLogger(__name__)
 
 DEFAULT_PAGE_SIZE = 20
-DEFAULT_BASE_PATH = "/api/json/v1/namespaces"
+DEFAULT_BASE_PATH = "/api/json/v1"
 
 
 class AstraCollection:
@@ -131,7 +131,7 @@ class AstraNamespace:
         return self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
-            json_data={"name": name},
+            json_data={"createCollection": {"name": name}},
         )
 
     def create_vector_collection(self, size, options=None, function="", name=""):
@@ -171,19 +171,13 @@ def create_client(
     astra_database_region=None,
     astra_application_token=None,
     base_url=None,
-    auth_base_url=None,
-    username=None,
-    password=None,
     debug=False,
 ):
-    astra_client = create_astra_client(
+    astra_client = AstraClient(
         astra_database_id=astra_database_id,
         astra_database_region=astra_database_region,
         astra_application_token=astra_application_token,
         base_url=base_url,
-        auth_base_url=auth_base_url,
-        username=username,
-        password=password,
         debug=debug,
     )
     return AstraDocumentClient(astra_client=astra_client)

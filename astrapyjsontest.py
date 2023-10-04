@@ -1,5 +1,6 @@
-from astrapyjson.config.client import create_astra_client
-import astrapyjson
+from astrapyjson.client import AstraJsonApiClient, AstraBaseClient
+
+# import astrapyjson
 
 # from astrapyjson import astra_vector_client, astra_serverless_client
 from dotenv import load_dotenv
@@ -11,7 +12,7 @@ http.client.HTTPConnection.debuglevel = 1
 
 load_dotenv()
 
-astra_client = create_astra_client(
+astra_client = AstraBaseClient(
     astra_database_id=os.environ["ASTRA_DB_ID"],
     astra_database_region=os.environ["ASTRA_DB_REGION"],
     astra_application_token=os.environ["ASTRA_DB_APPLICATION_TOKEN"],
@@ -21,10 +22,13 @@ astra_client = create_astra_client(
 # astra_serverless_client.init(token=astra_token, database_id=database_id)
 # astra_vector_client.init(token=astra_token, database_id=database_id)
 # astra_vector_client = init(dbid="name", dbregion="us-east-1", token="token")
+# from astra import AstraDevopsClient
+# from astra.vector import AstraVectorClient
+# from cassandra.cluster import Cluster
 
 # astra_vector_client.create_vector_collection(name="name", size=5) # Options: function
 my_namespace = astra_client.collections.namespace("vector")
-# my_collection = my_namespace.create_collection(name="vanillabean")
+my_collection = my_namespace.create_collection(name="vanillabean")
 returnvalue = my_namespace.create_vector_collection(name="new_vector", size=10)
 print(returnvalue)
 newreturnvalue = my_namespace.delete_collection(name="new_vector")

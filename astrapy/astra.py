@@ -12,15 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from astrapyjson.config.rest import http_methods
-from astrapyjson.config.rest import create_client as create_astra_client
+from astrapyjson.config.base import AstraClient
 import logging
 import json
 
 logger = logging.getLogger(__name__)
 
 DEFAULT_PAGE_SIZE = 20
-DEFAULT_BASE_PATH = "/api/json/v1/"
+DEFAULT_BASE_PATH = "/api/json/v1"
+
+
+class http_methods:
+    GET = "GET"
+    POST = "POST"
+    PUT = "PUT"
+    PATCH = "PATCH"
+    DELETE = "DELETE"
 
 
 class AstraCollection:
@@ -31,63 +38,42 @@ class AstraCollection:
         self.base_path = f"{DEFAULT_BASE_PATH}/{namespace_name}/{collection_name}"
         self.namespace_path = f"{DEFAULT_BASE_PATH}/{namespace_name}"
 
-    def _get(self, path=None, options=None):
-        full_path = f"{self.base_path}/{path}" if path else self.base_path
-        response = self.astra_client.request(
-            method=http_methods.GET, path=full_path, url_params=options
-        )
-        if isinstance(response, dict):
-            return response
-        return None
-
-    def _put(self, path=None, document=None):
-        return self.astra_client.request(
-            method=http_methods.PUT, path=f"{self.base_path}/{path}", json_data=document
-        )
-
-    def upgrade(self):
-        return self.astra_client.request(
-            method=http_methods.POST, path=f"{self.base_path}/upgrade"
-        )
-
-    def get_schema(self):
-        return self.astra_client.request(
-            method=http_methods.GET, path=f"{self.base_path}/json-schema"
-        )
-
-    def create_schema(self, schema=None):
-        return self.astra_client.request(
-            method=http_methods.PUT,
-            path=f"{self.base_path}/json-schema",
-            json_data=schema,
-        )
-
-    def update_schema(self, schema=None):
-        return self.astra_client.request(
-            method=http_methods.PUT,
-            path=f"{self.base_path}/json-schema",
-            json_data=schema,
-        )
-
     def get(self, path=None):
         return self._get(path=path)
 
-    def find(self, query=None, options=None):
-        options = {} if options is None else options
-        request_params = {"where": json.dumps(query), "page-size": DEFAULT_PAGE_SIZE}
-        request_params.update(options)
-        response = self.astra_client.request(
-            method=http_methods.GET, path=self.base_path, url_params=request_params
+    def _get(self, path=None, options=None):
+        return self.astra_client.request(
+            method=http_methods.POST,
+            path=f"{self.base_path}/{path}",
+            url_params=options,
         )
+
+    def _post(self, path=None, document=None):
+        return self.astra_client.request(
+            method=http_methods.POST,
+            path=f"{self.base_path}/{path}",
+            json_data=document,
+        )
+
+    def find(self, filter=None, options=None, projection=None):
+        filter = {} if filter is None else filter
+        options = {} if options is None else options
+        projection = {} if projection is None else projection
+        json_request = {"find": {"filter": filter, "projection": projection}}
+        response = self.astra_client.request(
+            method=http_methods.POST, path=self.base_path, json_data=json_request
+        )
+        print("RESPONSE" + json.dumps(response))
         if isinstance(response, dict):
             return response
         return None
 
     def find_one(self, query=None, options=None):
         options = {} if options is None else options
-        request_params = {"where": json.dumps(query), "page-size": 1}
-        request_params.update(options)
-        response = self._get(path=None, options=request_params)
+        json_request = {"find": {"filter": query}}
+        response = self.astra_client.request(
+            method=http_methods.POST, path=self.base_path, json_data=json_request
+        )
         if response is not None:
             keys = list(response.keys())
             if len(keys) == 0:
@@ -95,52 +81,84 @@ class AstraCollection:
             return response[keys[0]]
         return None
 
-    def create(self, path=None, document=None):
-        if path is not None:
-            return self._put(path=path, document=document)
+    def create(self, document=None):
+        query = {"insertOne": {"document": document}}
         return self.astra_client.request(
-            method=http_methods.POST, path=self.base_path, json_data=document
+            method=http_methods.POST, path=self.base_path, json_data=query
         )
 
-    def update(self, path, document):
-        return self.astra_client.request(
-            method=http_methods.PATCH,
-            path=f"{self.base_path}/{path}",
-            json_data=document,
+    def update_one(self, id, document):
+        json_query = (
+            {"updateOne": {"filter": {"_id": id}, "update": {"$set": document}}},
         )
-
-    def replace(self, path, document):
-        return self._put(path=path, document=document)
-
-    def delete(self, path):
-        return self.astra_client.request(
-            method=http_methods.POST, path=f"{self.base_path}/{path}"
-        )
-
-    def batch(self, documents=None, id_path=""):
-        if id_path == "":
-            id_path = "documentId"
         return self.astra_client.request(
             method=http_methods.POST,
-            path=f"{self.base_path}/batch",
-            json_data=documents,
-            url_params={"id-path": id_path},
+            path=f"{self.base_path}",
+            json_data=json_query,
         )
 
-    def push(self, path=None, value=None):
-        json_data = {"operation": "$push", "value": value}
+    def find_one_and_replace(self, id, document):
+        json_query = {
+            "findOneAndReplace": {"filter": {"_id": id}, "replacement": document}
+        }
+        return self.astra_client.request(
+            method=http_methods.POST,
+            path=f"{self.base_path}",
+            json_data=json_query,
+        )
+
+    def delete_subdocument(self, id, subdoc):
+        json_query = {
+            "findOneAndUpdate": {
+                "filter": {"_id": id},
+                "update": {"$unset": {subdoc: ""}},
+            }
+        }
+        return self.astra_client.request(
+            method=http_methods.POST,
+            path=f"{self.base_path}",
+            json_data=json_query,
+        )
+
+    def delete(self, id):
+        json_data = {"deleteOne": {"filter": {"_id": id}}}
+        return self.astra_client.request(
+            method=http_methods.POST, path=f"{self.base_path}", json_data=json_data
+        )
+
+    def insert_many(self, documents=None):
+        json_query = {"insertMany": {"documents": documents}}
+
+        return self.astra_client.request(
+            method=http_methods.POST, path=f"{self.base_path}", json_data=json_query
+        )
+
+    def push(self, id, update, options):
+        json_data = {
+            "findOneAndUpdate": {
+                "filter": {"_id": id},
+                "update": update,
+                "options": options,
+            }
+        }
         res = self.astra_client.request(
             method=http_methods.POST,
-            path=f"{self.base_path}/{path}/function",
+            path=f"{self.base_path}",
             json_data=json_data,
         )
         return res.get("data")
 
-    def pop(self, path=None):
-        json_data = {"operation": "$pop"}
+    def pop(self, id, update, options):
+        json_data = {
+            "findOneAndUpdate": {
+                "filter": {"_id": id},
+                "update": update,
+                "options": options,
+            }
+        }
         res = self.astra_client.request(
             method=http_methods.POST,
-            path=f"{self.base_path}/{path}/function",
+            path=f"{self.base_path}",
             json_data=json_data,
         )
         return res.get("data")
@@ -171,7 +189,7 @@ class AstraNamespace:
         return self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
-            json_data={"name": name},
+            json_data={"createCollection": {"name": name}},
         )
 
     def create_vector_collection(self, size, options=None, function="", name=""):
@@ -184,22 +202,21 @@ class AstraNamespace:
             jsondata = {"name": name, "options": options}
         else:
             jsondata = {"name": name}
-        res = self.astra_client.request(
+        return self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
             json_data={"createCollection": jsondata},
         )
-        print(res)
 
     def delete_collection(self, name=""):
         return self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
-            json_data={"deleteCollection": {"name":name}},
+            json_data={"deleteCollection": {"name": name}},
         )
 
 
-class AstraDocumentClient:
+class AstraJsonAPIClient(AstraClient):
     def __init__(self, astra_client=None):
         self.astra_client = astra_client
 
@@ -214,19 +231,16 @@ def create_client(
     astra_database_region=None,
     astra_application_token=None,
     base_url=None,
-    auth_base_url=None,
-    username=None,
-    password=None,
     debug=False,
 ):
-    astra_client = create_astra_client(
+    astra_client = AstraClient(
         astra_database_id=astra_database_id,
         astra_database_region=astra_database_region,
         astra_application_token=astra_application_token,
         base_url=base_url,
-        auth_base_url=auth_base_url,
-        username=username,
-        password=password,
         debug=debug,
     )
-    return AstraDocumentClient(astra_client=astra_client)
+    if base_url is None:
+        base_url = f"https://{astra_database_id}-{astra_database_region}.apps.astra.datastax.com"
+
+    return AstraJsonAPIClient(astra_client=astra_client)

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from astrapyjson.config.rest import http_methods, DEFAULT_TIMEOUT
+from astrapyjson.client import http_methods, DEFAULT_TIMEOUT
 import copy
 import requests
 
