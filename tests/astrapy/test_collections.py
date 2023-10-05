@@ -198,7 +198,7 @@ def test_delete_subdocument(test_collection, cliff_uuid):
     assert response is not None
 
 
-# @pytest.mark.it("should delete a document")
+@pytest.mark.it("should delete a document")
 def test_delete_document(test_collection, cliff_uuid):
     response = test_collection.delete(id=cliff_uuid)
 
@@ -279,5 +279,4 @@ def test_functions(test_collection):
 
     test_collection.push(filter={"_id": user_id}, update=update, options=options)
     doc_2 = test_collection.find(filter={"_id": user_id})
-    print(json.dumps(doc_2))
     assert doc_2

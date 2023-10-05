@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from astrapyjson.config.rest import http_methods
-from astrapyjson.config.rest import create_client as create_astra_client
+from astrapy.config.base import http_methods
+from astrapy.config.base import AstraClient
 import logging
 import json
 
@@ -175,7 +175,7 @@ def create_client(
     password=None,
     debug=False,
 ):
-    astra_client = create_astra_client(
+    astra_client = AstraClient(
         astra_database_id=astra_database_id,
         astra_database_region=astra_database_region,
         astra_application_token=astra_application_token,
