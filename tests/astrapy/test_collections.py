@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from astrapy.serverless import AstraCollection, create_client
+from astrapy.serverless import AstraCollection, AstraJsonClient
+from astrapy.vector import AstraVectorClient
+from astrapy.config.base import AstraClient
 import uuid
 import pytest
 import logging
@@ -41,12 +43,16 @@ cliffu = str(uuid.uuid4())
 
 @pytest.fixture
 def test_collection():
-    astra_client = create_client(
+    astra_client = AstraClient(
         astra_database_id=ASTRA_DB_ID,
         astra_database_region=ASTRA_DB_REGION,
         astra_application_token=ASTRA_DB_APPLICATION_TOKEN,
     )
-    return astra_client.namespace(ASTRA_DB_KEYSPACE).collection(TEST_COLLECTION_NAME)
+    json_client = AstraJsonClient(astra_client=astra_client)
+    test_collection = json_client.namespace(ASTRA_DB_KEYSPACE).collection(
+        TEST_COLLECTION_NAME
+    )
+    return test_collection
 
 
 @pytest.fixture
@@ -56,12 +62,14 @@ def cliff_uuid():
 
 @pytest.fixture
 def test_namespace():
-    astra_client = create_client(
+    astra_client = AstraClient(
         astra_database_id=ASTRA_DB_ID,
         astra_database_region=ASTRA_DB_REGION,
         astra_application_token=ASTRA_DB_APPLICATION_TOKEN,
     )
-    return astra_client.namespace(ASTRA_DB_KEYSPACE)
+    json_client = AstraJsonClient(astra_client=astra_client)
+
+    return json_client.namespace(ASTRA_DB_KEYSPACE)
 
 
 @pytest.mark.it("should initialize an AstraDB Collections Client")
@@ -95,17 +103,17 @@ def test_delete_collection(test_namespace):
 
 @pytest.mark.it("should create a document")
 def test_create_document(test_collection, cliff_uuid):
-    test_collection.create(
-        document={
-            "_id": cliff_uuid,
-            "first_name": "Cliff",
-            "last_name": "Wicklow",
-        },
-    )
+    json_query = {
+        "_id": cliff_uuid,
+        "first_name": "Cliff",
+        "last_name": "Wicklow",
+    }
+    test_collection.create(document=json_query)
 
-    document = test_collection.find_one(query={"_id": cliff_uuid})
-    print("DOCUMENTAFTERINSERT", document)
-    assert document != None
+    document = test_collection.find_one(filter={"_id": cliff_uuid})
+    print("JSON", document)
+
+    assert document is not None
 
 
 @pytest.mark.it("should create multiple documents")
@@ -140,7 +148,8 @@ def test_create_subdocument(test_collection, cliff_uuid):
         }
     )
 
-    document = test_collection.find_one(query={"_id": cliff_uuid})
+    document = test_collection.find_one(filter={"_id": cliff_uuid})
+    print("UPDATE", document)
     assert document["document"]["addresses"] is not None
 
 
@@ -152,6 +161,7 @@ def test_create_document_without_id(test_collection):
             "last_name": "Guy",
         }
     )
+    print("RESPONSE", response)
     document = test_collection.find(filter={"first_name": "New"})
     print("DOCUMENT", document)
     assert document["data"] is not None
@@ -166,29 +176,32 @@ def test_update_document(test_collection, cliff_uuid):
         }
     )
     document = test_collection.find(filter={"_id": cliff_uuid})
-    print(document)
+    print("DANG", document)
     assert document["data"]["documents"] is not None
 
 
 @pytest.mark.it("replace a document")
 def test_replace_document(test_collection, cliff_uuid):
     test_collection.find_one_and_replace(
-        id=cliff_uuid,
+        filter={"_id": cliff_uuid},
         replacement={
-            "addresses.work": {
-                "city": "New York",
-                "state": "NY",
-            }
+            "_id": cliff_uuid,
+            "addresses": {
+                "work": {
+                    "city": "New York",
+                    "state": "NY",
+                }
+            },
         },
     )
     document = test_collection.find(filter={"_id": cliff_uuid})
 
     assert document["data"]["documents"] is not None
-    document_2 = test_collection.find(
-        filter={"_id": cliff_uuid}, projection={"$addresses.home": 1}
+    document_2 = test_collection.find_one(
+        filter={"_id": cliff_uuid}, projection={"addresses.work.city": 1}
     )
 
-    print(json.dumps(document_2, indent=4))
+    print("HOME", json.dumps(document_2, indent=4))
 
 
 @pytest.mark.it("should delete a subdocument")
@@ -245,11 +258,12 @@ def test_find_one_document(test_collection):
             "last_name": "Danger",
         },
     )
-    document = test_collection.find_one(query={"first_name": f"Cliff-{user_id}"})
+    document = test_collection.find_one(filter={"first_name": f"Cliff-{user_id}"})
+    print("DOCUMENT", document)
 
     assert document["document"] is not None
 
-    document = test_collection.find_one(query={"first_name": f"Cliff-Not-There"})
+    document = test_collection.find_one(filter={"first_name": f"Cliff-Not-There"})
     assert document["document"] == None
 
 

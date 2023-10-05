@@ -1,4 +1,7 @@
-from astrapyjson.client import AstraJsonApiClient, AstraBaseClient
+from astrapy.serverless import AstraCollection, AstraJsonClient
+from astrapy.vector import AstraVectorClient
+from astrapy.config.base import AstraClient
+import uuid
 
 # import astrapyjson
 
@@ -9,29 +12,55 @@ import os, json
 import http
 
 http.client.HTTPConnection.debuglevel = 1
-
+cliffu = str(uuid.uuid4())
 load_dotenv()
 
-astra_client = AstraBaseClient(
+astra_client = AstraClient(
     astra_database_id=os.environ["ASTRA_DB_ID"],
     astra_database_region=os.environ["ASTRA_DB_REGION"],
     astra_application_token=os.environ["ASTRA_DB_APPLICATION_TOKEN"],
 )
+json_client = AstraJsonClient(astra_client=astra_client)
+test_collection = json_client.namespace("vector").collection("test")
 
-# API Key
-# astra_serverless_client.init(token=astra_token, database_id=database_id)
-# astra_vector_client.init(token=astra_token, database_id=database_id)
-# astra_vector_client = init(dbid="name", dbregion="us-east-1", token="token")
-# from astra import AstraDevopsClient
-# from astra.vector import AstraVectorClient
-# from cassandra.cluster import Cluster
+# Create a document
+json_query = {
+    "_id": cliffu,
+    "first_name": "Cliff",
+    "last_name": "Wicklow",
+}
+test_collection.create(document=json_query)
 
-# astra_vector_client.create_vector_collection(name="name", size=5) # Options: function
-my_namespace = astra_client.collections.namespace("vector")
-my_collection = my_namespace.create_collection(name="vanillabean")
-returnvalue = my_namespace.create_vector_collection(name="new_vector", size=10)
-print(returnvalue)
-newreturnvalue = my_namespace.delete_collection(name="new_vector")
-print(newreturnvalue)
-returnvalue = my_namespace.get_collections()
-print(returnvalue)
+# Check the document
+document = test_collection.find_one(filter={"_id": cliffu})
+print(document)
+# Update a document with a subdocument
+document = test_collection.update_one(
+    filter={"_id": cliffu},
+    update={"$set": {"addresses.city": "New York", "addresses.state": "NY"}},
+)
+print(document)
+
+# Check the document
+document = test_collection.find_one(filter={"_id": cliffu})
+print(document)
+
+# Replace the document
+test_collection.find_one_and_replace(
+    filter={"_id": cliffu},
+    replacement={
+        "_id": cliffu,
+        "addresses": {
+            "work": {
+                "city": "New York",
+                "state": "NY",
+            }
+        },
+    },
+)
+
+# Check the document
+document = test_collection.find_one(
+    filter={"_id": cliffu}, projection={"addresses.work.city": 1}
+)
+print(document)

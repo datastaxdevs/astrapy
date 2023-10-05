@@ -2,13 +2,13 @@
 platform darwin -- Python 3.10.11, pytest-7.4.0, pluggy-1.2.0
 rootdir: /Users/kirstenhunter/src/astrapyjson
 plugins: Faker-19.6.1, anyio-3.6.2
-collected 14 items
+collected 15 items
 
 tests/astrapy/test_collections.py .send: b'POST /api/json/v1/vector HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 51\r\nContent-Type: application/json\r\n\r\n'
 send: b'{"createCollection": {"name": "pytest_collection"}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:49 GMT
+header: Date: Thu, 05 Oct 2023 23:00:10 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 19
 header: Connection: keep-alive
@@ -16,7 +16,7 @@ send: b'POST /api/json/v1/vector HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31
 send: b'{"createCollection": {"name": "test_schema"}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:51 GMT
+header: Date: Thu, 05 Oct 2023 23:00:12 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 19
 header: Connection: keep-alive
@@ -24,15 +24,15 @@ send: b'POST /api/json/v1/vector HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31
 send: b'{"createCollection": {"name": "test"}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:52 GMT
+header: Date: Thu, 05 Oct 2023 23:00:12 GMT
 header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 293
+header: Content-Length: 295
 header: Connection: keep-alive
 .send: b'POST /api/json/v1/vector HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 23\r\nContent-Type: application/json\r\n\r\n'
 send: b'{"findCollections": {}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:52 GMT
+header: Date: Thu, 05 Oct 2023 23:00:12 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 89
 header: Connection: keep-alive
@@ -40,7 +40,7 @@ header: Connection: keep-alive
 send: b'{"deleteCollection": {"name": "pytest_collection"}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:54 GMT
+header: Date: Thu, 05 Oct 2023 23:00:16 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 19
 header: Connection: keep-alive
@@ -48,32 +48,32 @@ send: b'POST /api/json/v1/vector HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31
 send: b'{"deleteCollection": {"name": "test_schema"}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:55 GMT
+header: Date: Thu, 05 Oct 2023 23:00:19 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 19
 header: Connection: keep-alive
 .send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 123\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"insertOne": {"document": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b", "first_name": "Cliff", "last_name": "Wicklow"}}}'
+send: b'{"insertOne": {"document": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62", "first_name": "Cliff", "last_name": "Wicklow"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:56 GMT
+header: Date: Thu, 05 Oct 2023 23:00:20 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 67
 header: Connection: keep-alive
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 72\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"findOne": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}}}'
+send: b'{"findOne": {"filter": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:56 GMT
+header: Date: Thu, 05 Oct 2023 23:00:20 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 111
 header: Connection: keep-alive
-DOCUMENTAFTERINSERT {'document': {'_id': '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b', 'first_name': 'Cliff', 'last_name': 'Wicklow'}}
+JSON {'document': {'_id': 'e1ce7796-5e6b-4fa5-8199-f0475f356d62', 'first_name': 'Cliff', 'last_name': 'Wicklow'}}
 .send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 157\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"insertMany": {"documents": [{"_id": "hIKgYMme", "first_name": "Dang", "last_name": "Son"}, {"_id": "LmiztkUj", "first_name": "Yep", "last_name": "Boss"}]}}'
+send: b'{"insertMany": {"documents": [{"_id": "ynjjHynT", "first_name": "Dang", "last_name": "Son"}, {"_id": "oMNYbzkY", "first_name": "Yep", "last_name": "Boss"}]}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:56 GMT
+header: Date: Thu, 05 Oct 2023 23:00:20 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 50
 header: Connection: keep-alive
@@ -81,282 +81,281 @@ send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-
 send: b'{"find": {"filter": {}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:57 GMT
+header: Date: Thu, 05 Oct 2023 23:00:21 GMT
 header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 2259
+header: Content-Length: 2305
 header: Connection: keep-alive
-.send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 72\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"findOne": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}}}'
-reply: 'HTTP/1.1 200 OK\r\n'
-header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:57 GMT
-header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 111
-header: Connection: keep-alive
-DOCUMENTBEFORESUBDOC {'document': {'_id': '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b', 'first_name': 'Cliff', 'last_name': 'Wicklow'}}
-CLIFFUUID 02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b
-send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 151\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"updateOne": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}, "update": {"$set": {"addresses.city": "New York", "addresses.state": "NY"}}}}'
-reply: 'HTTP/1.1 200 OK\r\n'
-header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:57 GMT
-header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 47
-header: Connection: keep-alive
-DOCUMENT {'status': {'matchedCount': 1, 'modifiedCount': 1}}
-send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 72\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"findOne": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}}}'
-reply: 'HTTP/1.1 200 OK\r\n'
-header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:57 GMT
-header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 156
-header: Connection: keep-alive
-DOCUMENTAFTERSUBDOC {'document': {'_id': '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b', 'first_name': 'Cliff', 'last_name': 'Wicklow', 'addresses': {'city': 'New York', 'state': 'NY'}}}
-.send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 70\r\nContent-Type: application/json\r\n\r\n'
+.Fsend: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 70\r\nContent-Type: application/json\r\n\r\n'
 send: b'{"insertOne": {"document": {"first_name": "New", "last_name": "Guy"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:58 GMT
+header: Date: Thu, 05 Oct 2023 23:00:21 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 67
 header: Connection: keep-alive
+RESPONSE {'status': {'insertedIds': ['515febd7-c3cf-46d8-85d0-dde504ab26f4']}}
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 43\r\nContent-Type: application/json\r\n\r\n'
 send: b'{"find": {"filter": {"first_name": "New"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:58 GMT
+header: Date: Thu, 05 Oct 2023 23:00:21 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 1795
 header: Connection: keep-alive
-.send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 96\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"updateOne": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}, "first_name": "Dang"}}'
+DOCUMENT {'data': {'documents': [{'_id': 'f4051649-a414-46d2-a44b-a840ce368a16', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': 'a75707db-7a1c-4ef8-a518-4c8a51d61ae0', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '5e5568f0-95e7-479b-a41c-ecbf6d068f7a', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '7814c662-24e0-42fc-8e01-3de2e4fd31a7', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': 'c71d0c48-ebc5-4a10-bd5b-8c2cf5e427d7', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '521893fa-87d8-4ae6-a8f3-abb08628a57f', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '37659f28-37cc-4c5b-824d-f3b9899fded9', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '5b2f2481-8432-4894-823c-d096ab3b79c3', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '1056065f-59e7-4fe3-8260-569af25aeb8a', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': 'a637a05a-bbb0-4308-aefa-bc3c39289a87', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '775498b1-4900-4a22-b5f6-178dcdb2027f', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '8e0b013c-0944-483e-95cf-356792c8f909', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '64e5bf2d-0c7d-4a4d-a665-a126cfe9d16d', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '45a09a89-cbff-4bf5-9466-a01af01271f6', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '60391bf7-e7d7-4c9c-b1a0-bf41fdb7e580', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': 'be7aafbb-9e9a-42c6-ac36-ce293c2f981b', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '78d7b549-c194-4d17-807c-b5095e37dd28', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '9511918d-a575-40f2-a3d8-39afbd9e2fa4', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': 'a28feb13-6eaf-43a5-bf6f-37be69c4f66d', 'first_name': 'New', 'last_name': 'Guy'}, {'_id': '70cbcf31-8ae5-4df6-ada5-e99c0a91a9be', 'first_name': 'New', 'last_name': 'Guy'}], 'nextPageState': 'LQAAAAEBAAAAJDcwY2JjZjMxLThhZTUtNGRmNi1hZGE1LWU5OWMwYTkxYTliZQDwf///6wA='}}
+.Fsend: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 206\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"findOneAndReplace": {"filter": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62"}, "replacement": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62", "addresses": {"work": {"city": "New York", "state": "NY"}}}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:58 GMT
+header: Date: Thu, 05 Oct 2023 23:00:22 GMT
 header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 443
+header: Content-Length: 157
 header: Connection: keep-alive
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 69\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"find": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}}}'
+send: b'{"find": {"filter": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:59 GMT
+header: Date: Thu, 05 Oct 2023 23:00:22 GMT
 header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 180
+header: Content-Length: 146
 header: Connection: keep-alive
-{'data': {'documents': [{'_id': '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b', 'first_name': 'Cliff', 'last_name': 'Wicklow', 'addresses': {'city': 'New York', 'state': 'NY'}}], 'nextPageState': None}}
-.send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 154\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"findOneAndReplace": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}, "replacement": {"addresses.work": {"city": "New York", "state": "NY"}}}}'
+send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 114\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"findOne": {"filter": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62"}, "projection": {"addresses.work.city": 1}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:59 GMT
+header: Date: Thu, 05 Oct 2023 23:00:22 GMT
 header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 212
+header: Content-Length: 109
+header: Connection: keep-alive
+HOME {
+    "document": {
+        "_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62",
+        "addresses": {
+            "work": {
+                "city": "New York"
+            }
+        }
+    }
+}
+.send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 122\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"findOneAndUpdate": {"filter": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62"}, "update": {"$unset": {"addresses": ""}}}}'
+reply: 'HTTP/1.1 200 OK\r\n'
+header: Server: nginx/1.21.4
+header: Date: Thu, 05 Oct 2023 23:00:23 GMT
+header: Content-Type: application/json;charset=UTF-8
+header: Content-Length: 168
 header: Connection: keep-alive
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 69\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"find": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}}}'
+send: b'{"find": {"filter": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:26:59 GMT
+header: Date: Thu, 05 Oct 2023 23:00:23 GMT
 header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 180
+header: Content-Length: 92
 header: Connection: keep-alive
-DOCUMENT:  {'data': {'documents': [{'_id': '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b', 'first_name': 'Cliff', 'last_name': 'Wicklow', 'addresses': {'city': 'New York', 'state': 'NY'}}], 'nextPageState': None}}
-Fsend: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 122\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"findOneAndUpdate": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}, "update": {"$unset": {"addresses": ""}}}}'
+.send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 74\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"deleteOne": {"filter": {"_id": "e1ce7796-5e6b-4fa5-8199-f0475f356d62"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:00 GMT
+header: Date: Thu, 05 Oct 2023 23:00:23 GMT
 header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 202
+header: Content-Length: 29
 header: Connection: keep-alive
-SUBDOC RESPONSE
-{'data': {'document': {'_id': '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b', 'first_name': 'Cliff', 'last_name': 'Wicklow', 'addresses': {'city': 'New York', 'state': 'NY'}}}, 'status': {'matchedCount': 1, 'modifiedCount': 1}}
-send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 69\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"find": {"filter": {"_id": "02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b"}}}'
-reply: 'HTTP/1.1 200 OK\r\n'
-header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:00 GMT
-header: Content-Type: application/json;charset=UTF-8
-header: Content-Length: 135
-header: Connection: keep-alive
-{'data': {'documents': [{'_id': '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b', 'first_name': 'Cliff', 'last_name': 'Wicklow'}], 'nextPageState': None}}
 .send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 160\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"insertOne": {"document": {"_id": "15135b6d-b921-4f52-9924-69f189aa1a70", "first_name": "Cliff-15135b6d-b921-4f52-9924-69f189aa1a70", "last_name": "Wicklow"}}}'
+send: b'{"insertOne": {"document": {"_id": "d024e80d-190c-40a8-9dc5-5273670f8149", "first_name": "Cliff-d024e80d-190c-40a8-9dc5-5273670f8149", "last_name": "Wicklow"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:00 GMT
+header: Date: Thu, 05 Oct 2023 23:00:24 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 67
 header: Connection: keep-alive
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 159\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"insertOne": {"document": {"_id": "b20b242d-0853-4c23-9f69-43c240c4c6f2", "first_name": "Cliff-15135b6d-b921-4f52-9924-69f189aa1a70", "last_name": "Danger"}}}'
+send: b'{"insertOne": {"document": {"_id": "d831924c-0c42-4b49-a424-3ed66d384f4c", "first_name": "Cliff-d024e80d-190c-40a8-9dc5-5273670f8149", "last_name": "Danger"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:01 GMT
+header: Date: Thu, 05 Oct 2023 23:00:24 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 67
 header: Connection: keep-alive
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 82\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"find": {"filter": {"first_name": "Cliff-15135b6d-b921-4f52-9924-69f189aa1a70"}}}'
+send: b'{"find": {"filter": {"first_name": "Cliff-d024e80d-190c-40a8-9dc5-5273670f8149"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:01 GMT
+header: Date: Thu, 05 Oct 2023 23:00:24 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 298
 header: Connection: keep-alive
-DOCCCC
-{'data': {'documents': [{'_id': '15135b6d-b921-4f52-9924-69f189aa1a70', 'first_name': 'Cliff-15135b6d-b921-4f52-9924-69f189aa1a70', 'last_name': 'Wicklow'}, {'_id': 'b20b242d-0853-4c23-9f69-43c240c4c6f2', 'first_name': 'Cliff-15135b6d-b921-4f52-9924-69f189aa1a70', 'last_name': 'Danger'}], 'nextPageState': None}}
 .send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 160\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"insertOne": {"document": {"_id": "01fa5278-72d7-43de-9c36-8bad004e9f1a", "first_name": "Cliff-01fa5278-72d7-43de-9c36-8bad004e9f1a", "last_name": "Wicklow"}}}'
+send: b'{"insertOne": {"document": {"_id": "af9d27a0-e8f6-44fa-8608-18308dcc50fe", "first_name": "Cliff-af9d27a0-e8f6-44fa-8608-18308dcc50fe", "last_name": "Wicklow"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:01 GMT
+header: Date: Thu, 05 Oct 2023 23:00:25 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 67
 header: Connection: keep-alive
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 159\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"insertOne": {"document": {"_id": "f627013b-f625-4c3e-b21d-bb2f5868cd91", "first_name": "Cliff-01fa5278-72d7-43de-9c36-8bad004e9f1a", "last_name": "Danger"}}}'
+send: b'{"insertOne": {"document": {"_id": "cd34ecc8-c6bb-4554-a66c-728614775c9b", "first_name": "Cliff-af9d27a0-e8f6-44fa-8608-18308dcc50fe", "last_name": "Danger"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:02 GMT
+header: Date: Thu, 05 Oct 2023 23:00:25 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 67
 header: Connection: keep-alive
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 85\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"findOne": {"filter": {"first_name": "Cliff-01fa5278-72d7-43de-9c36-8bad004e9f1a"}}}'
+send: b'{"findOne": {"filter": {"first_name": "Cliff-af9d27a0-e8f6-44fa-8608-18308dcc50fe"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:02 GMT
+header: Date: Thu, 05 Oct 2023 23:00:25 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 147
 header: Connection: keep-alive
+DOCUMENT {'document': {'_id': 'cd34ecc8-c6bb-4554-a66c-728614775c9b', 'first_name': 'Cliff-af9d27a0-e8f6-44fa-8608-18308dcc50fe', 'last_name': 'Danger'}}
 send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 58\r\nContent-Type: application/json\r\n\r\n'
 send: b'{"findOne": {"filter": {"first_name": "Cliff-Not-There"}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:02 GMT
+header: Date: Thu, 05 Oct 2023 23:00:25 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 26
 header: Connection: keep-alive
 .send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 188\r\nContent-Type: application/json\r\n\r\n'
-send: b'{"insertOne": {"document": {"_id": "3990ea10-d526-44b4-abe8-1ccdbce80cd9", "first_name": "Cliff-3990ea10-d526-44b4-abe8-1ccdbce80cd9", "last_name": "Wicklow", "roles": ["admin", "user"]}}}'
+send: b'{"insertOne": {"document": {"_id": "d8eb0d46-2644-40e9-93ae-b351dbbdf0b1", "first_name": "Cliff-d8eb0d46-2644-40e9-93ae-b351dbbdf0b1", "last_name": "Wicklow", "roles": ["admin", "user"]}}}'
 reply: 'HTTP/1.1 200 OK\r\n'
 header: Server: nginx/1.21.4
-header: Date: Wed, 04 Oct 2023 23:27:02 GMT
+header: Date: Thu, 05 Oct 2023 23:00:26 GMT
 header: Content-Type: application/json;charset=UTF-8
 header: Content-Length: 67
 header: Connection: keep-alive
-F
+send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 155\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"findOneAndUpdate": {"filter": {"_id": "d8eb0d46-2644-40e9-93ae-b351dbbdf0b1"}, "update": {"$pop": {"roles": 1}}, "options": {"returnDocument": "after"}}}'
+reply: 'HTTP/1.1 200 OK\r\n'
+header: Server: nginx/1.21.4
+header: Date: Thu, 05 Oct 2023 23:00:26 GMT
+header: Content-Type: application/json;charset=UTF-8
+header: Content-Length: 212
+header: Connection: keep-alive
+send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 69\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"find": {"filter": {"_id": "d8eb0d46-2644-40e9-93ae-b351dbbdf0b1"}}}'
+reply: 'HTTP/1.1 200 OK\r\n'
+header: Server: nginx/1.21.4
+header: Date: Thu, 05 Oct 2023 23:00:26 GMT
+header: Content-Type: application/json;charset=UTF-8
+header: Content-Length: 190
+header: Connection: keep-alive
+send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 162\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"findOneAndUpdate": {"filter": {"_id": "d8eb0d46-2644-40e9-93ae-b351dbbdf0b1"}, "update": {"$push": {"roles": "users"}}, "options": {"returnDocument": "after"}}}'
+reply: 'HTTP/1.1 200 OK\r\n'
+header: Server: nginx/1.21.4
+header: Date: Thu, 05 Oct 2023 23:00:27 GMT
+header: Content-Type: application/json;charset=UTF-8
+header: Content-Length: 220
+header: Connection: keep-alive
+send: b'POST /api/json/v1/vector/test HTTP/1.1\r\nHost: a14e103c-d0f0-4e20-bb7c-87d31a9a9110-us-east1.apps.astra.datastax.com\r\nUser-Agent: python-requests/2.31.0\r\nAccept-Encoding: gzip, deflate\r\nAccept: */*\r\nConnection: keep-alive\r\nX-Cassandra-Token: AstraCS:nWWCtFFxSsEpKoOyKxTdBRvX:836716161d4992f0e334013dda929a1b393a22b6a1f4e09ba87b6bc72f8b7981\r\nContent-Length: 69\r\nContent-Type: application/json\r\n\r\n'
+send: b'{"find": {"filter": {"_id": "d8eb0d46-2644-40e9-93ae-b351dbbdf0b1"}}}'
+reply: 'HTTP/1.1 200 OK\r\n'
+header: Server: nginx/1.21.4
+header: Date: Thu, 05 Oct 2023 23:00:27 GMT
+header: Content-Type: application/json;charset=UTF-8
+header: Content-Length: 198
+header: Connection: keep-alive
+.
 
 =================================== FAILURES ===================================
-____________________________ test_replace_document _____________________________
+___________________________ test_create_subdocument ____________________________
 
-test_collection = <astrapy.serverless.AstraCollection object at 0x1086507f0>
-cliff_uuid = '02feaf8d-b1ff-47d6-82c2-e244c6a2cb1b'
+test_collection = <astrapy.serverless.AstraCollection object at 0x105508520>
+cliff_uuid = 'e1ce7796-5e6b-4fa5-8199-f0475f356d62'
 
-    @pytest.mark.it("replace a document")
-    def test_replace_document(test_collection, cliff_uuid):
-        test_collection.find_one_and_replace(
-            id=cliff_uuid,
-            replacement={
-                "addresses.work": {
-                    "city": "New York",
-                    "state": "NY",
-                }
-            },
-        )
-        document = test_collection.find(filter={"_id": cliff_uuid})
-        print("DOCUMENT: ", document)
-        assert document["data"]["documents"] is not None
->       document_2 = test_collection.find(
-            filter={"_id": cliff_uuid}, projection={"$addresses.home": 1}
-        )
-E       TypeError: AstraCollection.find() got an unexpected keyword argument 'projection'
-
-tests/astrapy/test_collections.py:192: TypeError
-________________________________ test_functions ________________________________
-
-test_collection = <astrapy.serverless.AstraCollection object at 0x109434d00>
-
-    @pytest.mark.it("should use document functions")
-    def test_functions(test_collection):
-        user_id = str(uuid.uuid4())
-        test_collection.create(
+    @pytest.mark.it("should create a subdocument")
+    def test_create_subdocument(test_collection, cliff_uuid):
+>       document = test_collection.update_one(
             document={
-                "_id": user_id,
-                "first_name": f"Cliff-{user_id}",
-                "last_name": "Wicklow",
-                "roles": ["admin", "user"],
-            },
+                "filter": {"_id": cliff_uuid},
+                "update": {"$set": {"addresses.city": "New York", "addresses.state": "NY"}},
+            }
         )
-        update = {"$pop": {"roles": 1}}
-        options = {"returnDocument": "after"}
-    
->       pop_res = test_collection.pop(id=user_id, update=update, options=options)
-E       AttributeError: 'AstraCollection' object has no attribute 'pop'
+E       TypeError: AstraCollection.update_one() got an unexpected keyword argument 'document'
 
-tests/astrapy/test_collections.py:280: AttributeError
+tests/astrapy/test_collections.py:144: TypeError
+_____________________________ test_update_document _____________________________
+
+test_collection = <astrapy.serverless.AstraCollection object at 0x1063ea590>
+cliff_uuid = 'e1ce7796-5e6b-4fa5-8199-f0475f356d62'
+
+    @pytest.mark.it("should update a document")
+    def test_update_document(test_collection, cliff_uuid):
+>       test_collection.update_one(
+            document={
+                "filter": {"_id": cliff_uuid},
+                "first_name": "Dang",
+            }
+        )
+E       TypeError: AstraCollection.update_one() got an unexpected keyword argument 'document'
+
+tests/astrapy/test_collections.py:172: TypeError
 =============================== warnings summary ===============================
-tests/astrapy/test_collections.py:67
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:67: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:75
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:75: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should initialize an AstraDB Collections Client")
 
-tests/astrapy/test_collections.py:72
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:72: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:80
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:80: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should create a collection")
 
-tests/astrapy/test_collections.py:82
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:82: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:90
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:90: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should get all collections")
-
-tests/astrapy/test_collections.py:88
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:88: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
-    @pytest.mark.it("should delete a collection")
 
 tests/astrapy/test_collections.py:96
   /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:96: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.it("should delete a collection")
+
+tests/astrapy/test_collections.py:104
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:104: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should create a document")
 
-tests/astrapy/test_collections.py:111
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:111: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:119
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:119: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should create multiple documents")
 
-tests/astrapy/test_collections.py:134
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:134: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:142
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:142: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should create a subdocument")
 
-tests/astrapy/test_collections.py:153
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:153: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:156
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:156: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should create a document without an ID")
 
-tests/astrapy/test_collections.py:165
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:165: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:170
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:170: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should update a document")
 
-tests/astrapy/test_collections.py:178
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:178: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:183
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:183: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("replace a document")
 
-tests/astrapy/test_collections.py:199
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:199: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:207
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:207: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should delete a subdocument")
 
-tests/astrapy/test_collections.py:216
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:216: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:214
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:214: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.it("should delete a document")
+
+tests/astrapy/test_collections.py:221
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:221: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should find documents")
 
-tests/astrapy/test_collections.py:240
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:240: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:243
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:243: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should find a single document")
 
-tests/astrapy/test_collections.py:266
-  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:266: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/astrapy/test_collections.py:270
+  /Users/kirstenhunter/src/astrapyjson/tests/astrapy/test_collections.py:270: PytestUnknownMarkWarning: Unknown pytest.mark.it - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.it("should use document functions")
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 =========================== short test summary info ============================
-FAILED tests/astrapy/test_collections.py::test_replace_document - TypeError: ...
-FAILED tests/astrapy/test_collections.py::test_functions - AttributeError: 'A...
-================== 2 failed, 12 passed, 14 warnings in 15.64s ==================
+FAILED tests/astrapy/test_collections.py::test_create_subdocument - TypeError...
+FAILED tests/astrapy/test_collections.py::test_update_document - TypeError: A...
+================== 2 failed, 13 passed, 15 warnings in 19.97s ==================
