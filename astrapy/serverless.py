@@ -56,12 +56,10 @@ class AstraCollection:
     def get(self, path=None):
         return self._get(path=path)
 
-    def find(self, filter=None, projection=None):
+    def find(self, filter=None, projection={}):
         filter = {} if filter is None else filter
-        if projection:
-            json_query = {"find": {"filter": filter}, "projection": projection}
-        else:
-            json_query = {"find": {"filter": filter}}
+        json_query = {"find": {"filter": filter}, "projection": projection}
+
         response = self.astra_client.request(
             method=http_methods.POST,
             path=self.base_path,
@@ -105,11 +103,9 @@ class AstraCollection:
 
         return response
 
-    def find_one(self, filter=None, projection=None):
-        if projection:
-            json_query = {"findOne": {"filter": filter, "projection": projection}}
-        else:
-            json_query = {"findOne": {"filter": filter}}
+    def find_one(self, filter=None, projection={}):
+        json_query = {"findOne": {"filter": filter, "projection": projection}}
+
         response = self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from astrapy.config.base import AstraClient, http_methods
-from astrapy.serverless import AstraJsonClient
+
 import logging
 import json
 
@@ -39,11 +39,6 @@ class AstraVectorCollection:
             return response
         return None
 
-    def _put(self, path=None, document=None):
-        return self.astra_client.request(
-            method=http_methods.PUT, path=f"{self.base_path}", json_data=document
-        )
-
     def _post(self, path=None, document=None):
         return self.astra_client.request(
             method=http_methods.POST, path=f"{self.base_path}", json_data=document
@@ -57,20 +52,22 @@ class AstraVectorCollection:
     def get(self, path=None):
         return self._get(path=path)
 
-    def find(self, filter=None, projection=None):
-        filter = {} if filter is None else filter
-        if projection:
-            json_query = {"find": {"filter": filter}, "projection": projection}
-        else:
-            json_query = {"find": {"filter": filter}}
+    def find(self, filter=None, projection=None, sort=None, options=None):
+        json_query = {
+            "find": {
+                "filter": filter,
+                "projection": projection,
+                "options": options,
+                "sort": sort,
+            }
+        }
+
         response = self.astra_client.request(
             method=http_methods.POST,
-            path=self.base_path,
+            path=f"{self.base_path}",
             json_data=json_query,
         )
-        if isinstance(response, dict):
-            return response
-        return None
+        return response
 
     def pop(self, filter, update, options):
         json_query = {
@@ -94,22 +91,35 @@ class AstraVectorCollection:
         )
         return response
 
-    def find_one_and_replace(self, id=None, replacement=None):
+    def find_one_and_replace(
+        self, sort=None, filter=None, replacement=None, options=None
+    ):
+        json_query = {
+            "findOneAndReplace": {
+                "filter": filter,
+                "replacement": replacement,
+                "options": options,
+                "sort": sort,
+            }
+        }
         response = self.astra_client.request(
-            method=http_methods.POST,
-            path=f"{self.base_path}",
-            json_data={
-                "findOneAndReplace": {"filter": {"_id": id}, "replacement": replacement}
-            },
+            method=http_methods.POST, path=f"{self.base_path}", json_data=json_query
         )
         return response
 
-    def find_one(self, query=None, options=None):
-        options = {} if options is None else options
+    def find_one(self, filter={}, projection=None, sort=None, options=None):
+        json_query = {
+            "findOne": {
+                "filter": filter,
+                "projection": projection,
+                "options": options,
+                "sort": sort,
+            }
+        }
         response = self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
-            json_data={"findOne": {"filter": query}},
+            json_data=json_query,
         )
         if response is not None:
             keys = list(response.keys())
@@ -124,13 +134,22 @@ class AstraVectorCollection:
             method=http_methods.POST, path=self.base_path, json_data=json_query
         )
 
-    def update_one(self, document):
-        json_query = {"updateOne": document}
-        return self.astra_client.request(
+    def find_one_and_update(self, sort=None, update=None, filter=None, options=None):
+        json_query = {
+            "findOneAndUpdate": {
+                "filter": filter,
+                "update": update,
+                "options": options,
+                "sort": sort,
+            }
+        }
+
+        response = self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
             json_data=json_query,
         )
+        return response
 
     def replace(self, path, document):
         return self._put(path=path, document=document)
@@ -153,7 +172,7 @@ class AstraVectorCollection:
             method=http_methods.POST, path=f"{self.base_path}", json_data=json_query
         )
 
-    def insert_many(self, documents=None, id_path=""):
+    def insert_many(self, documents=None):
         return self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
@@ -168,7 +187,7 @@ class AstraVectorNamespace:
         self.base_path = f"{DEFAULT_BASE_PATH}/{namespace_name}"
 
     def collection(self, collection_name):
-        return AstraCollection(
+        return AstraVectorCollection(
             astra_client=self.astra_client,
             namespace_name=self.namespace_name,
             collection_name=collection_name,
@@ -182,28 +201,18 @@ class AstraVectorNamespace:
         )
         return res
 
-    def create_collection(self, name=""):
-        return self.astra_client.request(
-            method=http_methods.POST,
-            path=f"{self.base_path}",
-            json_data={"createCollection": {"name": name}},
-        )
+    def create_vector_collection(self, size, name="", options=None, function="cosine"):
+        if options is None:
+            options = {"vector": {"size": size, "function": function}}
+        json_query = {"createCollection": {"name": name, "options": options}}
 
-    def create_vector_collection(self, size, options=None, function="", name=""):
-        if not options:
-            if size:
-                options = {"vector": {"size": size}}
-                if function:
-                    options["vector"]["function"] = function
-        if options:
-            jsondata = {"name": name, "options": options}
-        else:
-            jsondata = {"name": name}
-        return self.astra_client.request(
+        response = self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
-            json_data=jsondata,
+            json_data=json_query,
         )
+        print(response)
+        return response
 
     def delete_collection(self, name=""):
         return self.astra_client.request(
@@ -218,7 +227,7 @@ class AstraVectorClient:
         self.astra_client = astra_client
 
     def namespace(self, namespace_name):
-        return AstraNamespace(
+        return AstraVectorNamespace(
             astra_client=self.astra_client, namespace_name=namespace_name
         )
 
