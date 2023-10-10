@@ -107,7 +107,7 @@ class AstraVectorCollection:
         )
         return response
 
-    def find_one(self, filter={}, projection=None, sort=None, options=None):
+    def find_one(self, filter={}, projection={}, sort=None, options=None):
         json_query = {
             "findOne": {
                 "filter": filter,

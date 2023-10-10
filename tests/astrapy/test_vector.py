@@ -142,7 +142,6 @@ def test_create_documents(test_collection):
 @pytest.mark.webtest("Find one document")
 def test_find_document(test_collection):
     document = test_collection.find_one(filter={"_id": 4})
-    print(document)
     assert document is not None
 
 
@@ -152,7 +151,6 @@ def test_find_documents_vector(test_collection):
     options = {"limit": 100}
 
     document = test_collection.find(sort=sort, options=options)
-    print(document)
     assert document is not None
 
 
@@ -163,7 +161,6 @@ def test_find_documents_vector_proj(test_collection):
     projection = {"$vector": 1, "$similarity": 1}
 
     document = test_collection.find(sort=sort, options=options, projection=projection)
-    print(document)
     assert document is not None
 
 
@@ -173,7 +170,6 @@ def test_find_documents_vector_proj(test_collection):
     projection = {"$vector": 1}
 
     document = test_collection.find(sort=sort, options={}, projection=projection)
-    print(document)
     assert document is not None
 
 
@@ -184,9 +180,8 @@ def test_find_one_and_update_vector(test_collection):
     options = {"returnDocument": "after"}
 
     test_collection.find_one_and_update(sort=sort, update=update, options=options)
-    document = test_collection.find(filter={"status": "active"})
-    print(document)
-    assert document["documents"] is not None
+    document = test_collection.find_one(filter={"status": "active"})
+    assert document["document"] is not None
 
 
 @pytest.mark.webtest("Find one and replace with vector search")
@@ -204,16 +199,11 @@ def test_find_one_and_replace_vector(test_collection):
     test_collection.find_one_and_replace(
         sort=sort, replacement=replacement, options=options
     )
-    document = test_collection.find(filter={"name": "Vision Vector Frame"})
-    print(document)
-    assert document["documents"] is not None
+    document = test_collection.find_one(filter={"name": "Vision Vector Frame"})
+    assert document["document"] is not None
 
 
 @pytest.mark.skip("Delete a collection")
 def test_delete_collection(test_namespace):
     returnval = test_namespace.delete_collection(name=TEST_COLLECTION_NAME)
-    print(returnval)
     assert returnval is not None
-
-    # Findoneand replace with vector search
-    # findoneanddelete with vector search
