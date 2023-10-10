@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from astrapy.config.base import AstraClient, http_methods
+from astrapy.base import AstraClient, http_methods
 import logging
 import json
 
