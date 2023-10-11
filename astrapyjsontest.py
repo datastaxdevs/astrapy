@@ -1,6 +1,6 @@
 from astrapy.serverless import AstraCollection, AstraJsonClient
 from astrapy.vector import AstraVectorClient
-from astrapy.config.base import AstraClient
+from astrapy.base import AstraClient
 import uuid
 
 # import astrapyjson

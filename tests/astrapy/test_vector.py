@@ -16,7 +16,7 @@
 # of "vector"
 
 from typing import List
-from astrapy.config.base import AstraClient, http_methods
+from astrapy.base import AstraClient, http_methods
 from astrapy.serverless import AstraJsonClient
 from astrapy.vector import AstraVectorClient
 from astrapy.ops import AstraOps
@@ -141,7 +141,7 @@ def test_create_documents(test_collection):
 
 @pytest.mark.webtest("Find one document")
 def test_find_document(test_collection):
-    document = test_collection.find_one(filter={"_id": 4})
+    document = test_collection.find_one(filter={"_id": "4"})
     assert document is not None
 
 
