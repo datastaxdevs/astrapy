@@ -64,8 +64,8 @@ def test_collection():
         astra_database_region=ASTRA_DB_REGION,
         astra_application_token=ASTRA_DB_APPLICATION_TOKEN,
     )
-    vector_client = AstraCollectionClient(astra_client=astra_client)
-    test_collection = vector_client.namespace(ASTRA_DB_KEYSPACE).collection(
+    collections_client = AstraCollectionClient(astra_client=astra_client)
+    test_collection = collections_client.namespace(ASTRA_DB_KEYSPACE).collection(
         TEST_COLLECTION_NAME
     )
     return test_collection
@@ -78,9 +78,9 @@ def test_namespace():
         astra_database_region=ASTRA_DB_REGION,
         astra_application_token=ASTRA_DB_APPLICATION_TOKEN,
     )
-    vector_client = AstraCollectionClient(astra_client=astra_client)
+    collections_client = AstraCollectionClient(astra_client=astra_client)
 
-    return vector_client.namespace(ASTRA_DB_KEYSPACE)
+    return collections_client.namespace(ASTRA_DB_KEYSPACE)
 
 
 @pytest.mark.webtest("should create a vector collection")
@@ -104,7 +104,7 @@ def test_create_document_cliff(test_collection, cliff_uuid):
         "first_name": "Cliff",
         "last_name": "Wicklow",
     }
-    response = test_collection.create(document=json_query)
+    response = test_collection.insert_one(document=json_query)
 
     document = test_collection.find_one(filter={"_id": cliff_uuid})
 
@@ -120,7 +120,7 @@ def test_create_document(test_collection):
         "$vector": [0.25, 0.25, 0.25, 0.25, 0.25],
     }
 
-    res = test_collection.create(document=json_query)
+    res = test_collection.insert_one(document=json_query)
     assert res is not None
 
 

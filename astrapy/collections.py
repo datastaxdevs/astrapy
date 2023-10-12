@@ -118,22 +118,23 @@ class AstraCollection:
         )
         return response
 
-    def find_one(self, filter=None, projection={}):
-        json_query = {"findOne": {"filter": filter, "projection": projection}}
-
+    def find_one(self, filter={}, projection={}, sort={}, options={}):
+        json_query = {
+            "findOne": {
+                "filter": filter,
+                "projection": projection,
+                "options": options,
+                "sort": sort,
+            }
+        }
         response = self.astra_client.request(
             method=http_methods.POST,
             path=f"{self.base_path}",
             json_data=json_query,
         )
-        if response is not None:
-            keys = list(response.keys())
-            if len(keys) == 0:
-                return None
-            return response[keys[0]]
-        return None
+        return response
 
-    def create(self, path=None, document=None):
+    def insert_one(self, path=None, document=None):
         json_query = {"insertOne": {"document": document}}
         response = self.astra_client.request(
             method=http_methods.POST, path=self.base_path, json_data=json_query

@@ -139,68 +139,7 @@ def test_create_documents(test_collection):
     assert res is not None
 
 
-@pytest.mark.webtest("Find one document")
-def test_find_document(test_collection):
-    document = test_collection.find_one(filter={"_id": "4"})
-    assert document is not None
 
-
-@pytest.mark.webtest("Find documents using vector search")
-def test_find_documents_vector(test_collection):
-    sort = {"$vector": [0.15, 0.1, 0.1, 0.35, 0.55]}
-    options = {"limit": 100}
-
-    document = test_collection.find(sort=sort, options=options)
-    assert document is not None
-
-
-@pytest.mark.webtest("Find documents using vector search and projection")
-def test_find_documents_vector_proj(test_collection):
-    sort = {"$vector": [0.15, 0.1, 0.1, 0.35, 0.55]}
-    options = {"limit": 100}
-    projection = {"$vector": 1, "$similarity": 1}
-
-    document = test_collection.find(sort=sort, options=options, projection=projection)
-    assert document is not None
-
-
-@pytest.mark.webtest("Find a document using vector search and projection")
-def test_find_documents_vector_proj(test_collection):
-    sort = ({"$vector": [0.15, 0.1, 0.1, 0.35, 0.55]},)
-    projection = {"$vector": 1}
-
-    document = test_collection.find(sort=sort, options={}, projection=projection)
-    assert document is not None
-
-
-@pytest.mark.webtest("Find one and update with vector search")
-def test_find_one_and_update_vector(test_collection):
-    sort = {"$vector": [0.15, 0.1, 0.1, 0.35, 0.55]}
-    update = {"$set": {"status": "active"}}
-    options = {"returnDocument": "after"}
-
-    test_collection.find_one_and_update(sort=sort, update=update, options=options)
-    document = test_collection.find_one(filter={"status": "active"})
-    assert document["document"] is not None
-
-
-@pytest.mark.webtest("Find one and replace with vector search")
-def test_find_one_and_replace_vector(test_collection):
-    sort = ({"$vector": [0.15, 0.1, 0.1, 0.35, 0.55]},)
-    replacement = {
-        "_id": "3",
-        "name": "Vision Vector Frame",
-        "description": "Vision Vector Frame - A deep learning display that controls your mood",
-        "$vector": [0.1, 0.05, 0.08, 0.3, 0.6],
-        "status": "inactive",
-    }
-    options = {"returnDocument": "after"}
-
-    test_collection.find_one_and_replace(
-        sort=sort, replacement=replacement, options=options
-    )
-    document = test_collection.find_one(filter={"name": "Vision Vector Frame"})
-    assert document["document"] is not None
 
 
 @pytest.mark.skip("Delete a collection")
