@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: astrapy
-Version: 0.5.0.dev1
+Version: 0.5.0.dev2
 Summary: AstraPy is a Pythonic SDK for DataStax Astra
 Home-page: https://github.com/datastax/astrapy
 Author: Kirsten Hunter

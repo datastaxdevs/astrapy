@@ -5,10 +5,8 @@ setup.py
 astrapy/__init__.py
 astrapy/astra.py
 astrapy/base.py
-astrapy/jsonapi.py
+astrapy/collections.py
 astrapy/ops.py
-astrapy/serverless.py
-astrapy/vector.py
 astrapy.egg-info/PKG-INFO
 astrapy.egg-info/SOURCES.txt
 astrapy.egg-info/dependency_links.txt
